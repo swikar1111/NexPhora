@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexPhora - Smart Ambulance</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(34,211,238,0.2);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .topbar-logo {
+      font-size: 1.1rem;
+      color: #67e8f9;
+      font-weight: bold;
+    }
+
+    .topbar-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-badge {
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.2);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      color: #22d3ee;
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #64748b;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover {
+      border-color: #f43f5e;
+      color: #f43f5e;
+    }
+
+    body { padding-top: 60px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span class="topbar-logo">🚑 NexPhora</span>
+    <div class="topbar-user">
+      <span class="user-badge">👤 USER SESSION</span>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>🚑 NexPhora</h1>
+    <p>AI-Powered Emergency Response System</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Report Emergency</h2>
+      <form id="emergencyForm">
+        <input type="text" id="location" placeholder="Location (e.g. Anna Nagar, Chennai)" required>
+        <textarea id="condition" rows="4" placeholder="Patient Condition (e.g. Heavy bleeding from leg, unconscious...)" required></textarea>
+        
+        <button type="button" onclick="useVoiceInput()">🎤 Voice Input</button>
+        <button type="button" onclick="useCamera()">📸 Take Photo</button>
+        
+        <button type="submit">🚨 SEND EMERGENCY</button>
+      </form>
+
+      <div id="status"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function logout() {
+      if (confirm('Sign out of NexPhora?')) {
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+</body>
+</html>
